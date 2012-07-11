@@ -43,7 +43,7 @@ public:
         Mutex::Autolock _l(sLock);
         return sInstance != 0;
     }
-    
+
 protected:
     ~Singleton() { };
     Singleton() { };
@@ -65,10 +65,9 @@ private:
  */
 
 #define ANDROID_SINGLETON_STATIC_INSTANCE(TYPE)                 \
-    template<> Mutex Singleton< TYPE >::sLock(Mutex::PRIVATE);  \
-    template<> TYPE* Singleton< TYPE >::sInstance(0);           \
-    template class Singleton< TYPE >;
-
+    template<> ANDROID_API Mutex Singleton< TYPE >::sLock(Mutex::PRIVATE);  \
+    template<> ANDROID_API TYPE* Singleton< TYPE >::sInstance(0);           \
+    template class ANDROID_API Singleton< TYPE >;
 
 // ---------------------------------------------------------------------------
 }; // namespace android
